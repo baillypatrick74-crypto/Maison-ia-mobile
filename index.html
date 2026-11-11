@@ -1,0 +1,24 @@
+<!doctype html>
+<html lang="fr"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#14264a"><title>MAISON IA</title>
+<style>
+:root{--navy:#14264a;--blue:#2563eb;--bg:#f2f5fa;--ink:#172033;--muted:#64748b;--line:#dce4ef}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.45 system-ui,Arial,sans-serif}header{background:linear-gradient(120deg,#14264a,#2563eb);color:white;padding:23px 16px}.wrap{max-width:760px;margin:auto;padding:0 14px}h1{font-size:29px;margin:0}header p{margin:5px 0;color:#dbeafe}main{padding:18px 0 35px}.info{background:#fff7ed;border:1px solid #fed7aa;color:#9a3412;border-radius:12px;padding:12px;font-size:13px;margin-bottom:14px}.card{background:white;border:1px solid var(--line);border-radius:16px;padding:16px;margin-bottom:14px;box-shadow:0 5px 18px #0f172a08}h2{font-size:18px;margin:0 0 12px}.buttons{display:grid;grid-template-columns:1fr 1fr;gap:11px}.scene{min-height:116px;border:1px solid var(--line);background:#f8fafc;border-radius:14px;padding:14px;text-align:left;font:inherit;cursor:pointer;color:var(--ink)}.scene b{display:block;font-size:17px;margin:7px 0 3px}.scene span{font-size:27px}.scene small{color:var(--muted)}button:focus{outline:3px solid #93c5fd;outline-offset:2px}.action{background:#eff6ff;color:#1d4ed8;border:1px solid #bfdbfe;border-radius:10px;padding:11px 13px;font-weight:700;cursor:pointer}.muted{font-size:13px;color:var(--muted)}input{width:100%;padding:11px;border:1px solid #cbd5e1;border-radius:9px;font:inherit;margin:5px 0 10px}.primary{width:100%;background:var(--blue);color:white;border:0;border-radius:10px;padding:13px;font-weight:700}footer{text-align:center;color:var(--muted);font-size:12px;padding:16px}@media(max-width:380px){.buttons{grid-template-columns:1fr}.scene{min-height:90px}}
+</style></head><body>
+<header><div class="wrap"><h1>🏠 MAISON IA</h1><p>Tableau de commande de ta maison</p></div></header>
+<main class="wrap">
+<div class="info"><b>Important :</b> cette version est un tableau de bord de raccourcis. Les commandes réelles sont exécutées par Alexa, Konyks ou SmartThings. Les boutons ci-dessous ouvrent ces services ; ils ne déclenchent pas automatiquement une routine précise.</div>
+<section class="card"><h2>🎛️ Mes scénarios</h2><div class="buttons">
+<button class="scene" onclick="openAlexa()"><span>🌙</span><b>Bonne nuit</b><small>Ouvrir Alexa</small></button>
+<button class="scene" onclick="openAlexa()"><span>🏡</span><b>Je suis à la maison</b><small>Ouvrir Alexa</small></button>
+<button class="scene" onclick="openAlexa()"><span>🎬</span><b>Cinéma</b><small>Ouvrir Alexa</small></button>
+<button class="scene" onclick="openAlexa()"><span>⏻</span><b>Tout éteindre</b><small>Ouvrir Alexa</small></button>
+</div><p class="muted">Tu peux aussi dire directement « Alexa, bonne nuit » ou le nom de ta routine.</p></section>
+<section class="card"><h2>🔌 Prises Konyks</h2><p class="muted">Ouvre Alexa pour commander tes prises Priska Max, ou Konyks pour gérer leur configuration.</p><button class="action" onclick="openAlexa()">Ouvrir Alexa</button> <button class="action" onclick="openKonyks()">Ouvrir Konyks</button></section>
+<section class="card"><h2>📺 Télévision Samsung</h2><p class="muted">Ouvre SmartThings pour utiliser la télécommande de ton téléviseur.</p><button class="action" onclick="openSmartThings()">Ouvrir SmartThings</button></section>
+<section class="card"><h2>⚙️ Ma maison</h2><label for="home">Nom de la maison</label><input id="home" placeholder="Ma maison"><label for="notes">Mes appareils / remarques</label><input id="notes" placeholder="Ex. Priska salon, Priska chambre"><button class="primary" onclick="save()">Enregistrer sur ce téléphone</button><p class="muted" id="saved"></p></section>
+</main><footer>MAISON IA · Version mobile 2.1</footer>
+<script>
+function openAlexa(){location.href='https://alexa.amazon.fr/'}function openKonyks(){location.href='https://www.konyks.com/'}function openSmartThings(){location.href='https://www.smartthings.com/'}
+function save(){localStorage.setItem('maisonia_home',document.getElementById('home').value);localStorage.setItem('maisonia_notes',document.getElementById('notes').value);document.getElementById('saved').textContent='Enregistré sur ce téléphone.'}
+document.getElementById('home').value=localStorage.getItem('maisonia_home')||'';document.getElementById('notes').value=localStorage.getItem('maisonia_notes')||'';
+</script></body></html>
